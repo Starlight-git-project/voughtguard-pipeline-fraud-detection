@@ -1,0 +1,1 @@
+"""Orquestração principal do pipeline: limpeza -> transformação -> qualidade."""

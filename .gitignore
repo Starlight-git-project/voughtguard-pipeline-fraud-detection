@@ -1,0 +1,21 @@
+# Ambiente virtual
+venv/
+env/
+
+# Variáveis de ambiente
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Dados sensíveis
+data/raw/*.csv
+!data/raw/.gitkeep
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
