@@ -1,6 +1,7 @@
 # Ambiente virtual
 venv/
 env/
+.venv/
 
 # Variáveis de ambiente
 .env
@@ -10,8 +11,12 @@ __pycache__/
 *.pyc
 
 # Dados sensíveis
-data/raw/*.csv
+*.csv
+*.parquet
+!tests/fixtures/.gitkeep
 !data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/staging/.gitkeep
 
 # VS Code
 .vscode/
