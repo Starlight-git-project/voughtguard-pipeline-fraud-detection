@@ -1,0 +1,1 @@
+"""Leitura e validação das variáveis de ambiente do projeto."""

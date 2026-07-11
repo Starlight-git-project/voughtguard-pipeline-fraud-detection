@@ -1,0 +1,1 @@
+"""Geração do relatório de Data Quality."""
