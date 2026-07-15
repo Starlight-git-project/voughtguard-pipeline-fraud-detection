@@ -79,3 +79,24 @@ def gerar_relatorio(df: pd.DataFrame, n_desvios: float = OUTLIER_DESVIOS) -> dic
     )
 
     return relatorio
+
+def salvar_relatorio(
+    relatorio: dict,
+    caminho: str = "data/processed/relatorio_qualidade.csv",
+) -> None:
+    
+    caminho_path = Path(caminho)
+    caminho_path.parent.mkdir(parents=True, exist_ok=True)
+ 
+    linhas = []
+    for chave, valor in relatorio.items():
+        if isinstance(valor, dict):
+            for subchave, subvalor in valor.items():
+                linhas.append({"metrica": f"{chave}.{subchave}", "valor": subvalor})
+        else:
+            linhas.append({"metrica": chave, "valor": valor})
+ 
+    df_relatorio = pd.DataFrame(linhas)
+    df_relatorio.to_csv(caminho_path, index=False)
+ 
+    logger.info("Relatorio salvo em %s", caminho_path)
