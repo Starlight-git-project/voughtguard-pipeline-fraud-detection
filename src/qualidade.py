@@ -84,7 +84,19 @@ def salvar_relatorio(
     relatorio: dict,
     caminho: str = "data/processed/relatorio_qualidade.csv",
 ) -> None:
-    
+    """Salva o relatório de Data Quality em um arquivo CSV.
+ 
+    Métricas aninhadas (ex: nulos_por_coluna) são achatadas em linhas
+    no formato 'metrica.subchave'.
+ 
+    Args:
+        relatorio: dicionário retornado por gerar_relatorio().
+        caminho: caminho de destino do CSV.
+            Padrão: 'data/processed/relatorio_qualidade.csv'.
+ 
+    Raises:
+        OSError: se não for possível criar o diretório de destino.
+    """
     caminho_path = Path(caminho)
     caminho_path.parent.mkdir(parents=True, exist_ok=True)
  
