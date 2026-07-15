@@ -17,6 +17,24 @@ logger = logging.getLogger(__name__)
 COLUNAS_CRITICAS = ("transaction_id", "amount", "is_fraud")
 
 def gerar_relatorio(df: pd.DataFrame, n_desvios: float = OUTLIER_DESVIOS) -> dict:
+    """Gera o relatório de Data Quality com as métricas do desafio.
+
+    Considera "registro com erro" qualquer linha que tenha: nulo em uma
+    coluna crítica, valor fora do domínio em 'transaction_type' ou
+    'is_fraud', ou seja outlier em 'amount'.
+
+    Args:
+        df: DataFrame de entrada (pode ser o dado bruto ou já limpo).
+        n_desvios: número de desvios padrão usado no critério de outlier
+            em 'amount'. Padrão: OUTLIER_DESVIOS (3.0).
+
+    Returns:
+        Dicionário com as métricas de Data Quality.
+
+    Raises:
+        KeyError: se alguma coluna obrigatória (transaction_type,
+            is_fraud, amount) não existir no DataFrame.
+    """
     total_registros = len(df)
     nulos_por_coluna = df.isna().sum().to_dict()
 
