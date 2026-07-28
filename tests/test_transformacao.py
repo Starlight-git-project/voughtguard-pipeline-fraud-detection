@@ -1,7 +1,7 @@
 """Testes das funções de transformação."""
 
 import pandas as pd
-from src.transformacao import adicionar_combined_risk, adicionar_period_of_day, transformar
+from src.transformacao import criar_combined_risk, criar_period_of_day, transformar
 
 def test_adicionar_combined_risk():
     """Testa se combined_risk calcula a média corretamente."""
@@ -9,7 +9,7 @@ def test_adicionar_combined_risk():
         "device_risk_score": [10, 50],
         "ip_risk_score": [20, 60]
     })
-    resultado = adicionar_combined_risk(df)
+    resultado = criar_combined_risk(df)
     assert resultado["combined_risk"][0] == 15.0
     assert resultado["combined_risk"][1] == 55.0
 
@@ -18,7 +18,7 @@ def test_adicionar_period_of_day():
     df = pd.DataFrame({
         "hour": [3, 9, 15, 20]
     })
-    resultado = adicionar_period_of_day(df)
+    resultado = criar_period_of_day(df)
     assert resultado["period_of_day"][0] == "madrugada"
     assert resultado["period_of_day"][1] == "manha"
     assert resultado["period_of_day"][2] == "tarde"
