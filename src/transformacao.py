@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-def adicionar_combined_risk(df: pd.DataFrame) -> pd.DataFrame:
+def criar_combined_risk(df: pd.DataFrame) -> pd.DataFrame:
     """Cria a coluna combined_risk como média entre device_risk_score e ip_risk_score."""
     df_resultado = df.copy()
     df_resultado["combined_risk"] = (df_resultado["device_risk_score"] + df_resultado["ip_risk_score"]) / 2
@@ -27,7 +27,7 @@ def adicionar_period_of_day(df: pd.DataFrame) -> pd.DataFrame:
 
 def transformar(df: pd.DataFrame) -> pd.DataFrame:
     """Aplica todas as transformações: combined_risk e period_of_day."""
-    df = adicionar_combined_risk(df)
+    df = criar_combined_risk(df)
     df = adicionar_period_of_day(df)
     return df
     
