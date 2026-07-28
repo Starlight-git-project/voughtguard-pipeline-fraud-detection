@@ -19,7 +19,7 @@ def classificar_periodo(hora: int) -> str:
     else:
         return "noite"
     
-def adicionar_period_of_day(df: pd.DataFrame) -> pd.DataFrame:
+def criar_period_of_day(df: pd.DataFrame) -> pd.DataFrame:
     """Cria a coluna period_of_day a partir da coluna hour."""
     df_resultado = df.copy()
     df_resultado["period_of_day"] = df_resultado["hour"].apply(classificar_periodo)
@@ -28,6 +28,6 @@ def adicionar_period_of_day(df: pd.DataFrame) -> pd.DataFrame:
 def transformar(df: pd.DataFrame) -> pd.DataFrame:
     """Aplica todas as transformações: combined_risk e period_of_day."""
     df = criar_combined_risk(df)
-    df = adicionar_period_of_day(df)
+    df = criar_period_of_day(df)
     return df
     
