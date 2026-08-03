@@ -12,28 +12,35 @@ voughtguard-pipeline-fraud-detection/
 ├── .gitignore            # dados, credenciais e temporários ignorados
 ├── README.md             # este arquivo
 ├── requirements.txt      # dependências do projeto
+├── Contributing.md       # guia de contribuição do time
 │
 ├── data/
 │   ├── raw/              # dataset original — não commitado
 │   ├── staging/          # dados intermediários do pipeline — não commitado
-│   └── processed/        # tabelas analíticas geradas
+│   └── processed/        # tabelas e relatórios gerados
+│       ├── ranking_paises_fraude.csv
+│       ├── top_merchant_risco.csv
+│       └── relatorio_qualidade.csv
 │
 ├── src/
 │   ├── __init__.py
-│   ├── config.py         # leitura de variáveis de ambiente
-│   ├── pipeline.py       # orquestração principal
-│   ├── limpeza.py        # funções de limpeza e validação
-│   ├── transformacao.py  # criação de novas colunas
-│   └── qualidade.py      # relatório de data quality
+│   ├── config.py              # leitura de variáveis de ambiente
+│   ├── pipeline.py            # orquestração principal
+│   ├── limpeza.py             # funções de limpeza e validação
+│   ├── transformacao.py       # criação de novas colunas
+│   ├── qualidade.py           # relatório de data quality
+│   └── tabelas_analiticas.py  # ranking de países e merchants
 │
 ├── tests/
 │   ├── __init__.py
-│   ├── fixtures/          # amostras de dados para os testes
+│   ├── fixtures/               # amostras de dados para os testes
 │   ├── test_limpeza.py
 │   └── test_transformacao.py
 │
 ├── notebooks/
-│   └── exploracao.ipynb  # análise exploratória
+│   ├── exploracao.ipynb           # análise exploratória genérica
+│   ├── exploracao_limpeza.ipynb   # validação manual do limpeza.py
+│   └── analise_fraude.ipynb       # análise de padrões de fraude
 │
 └── docs/
     ├── orquestracao.md        # proposta de orquestração
