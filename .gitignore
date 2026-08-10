@@ -9,6 +9,8 @@ env/
 # Python
 __pycache__/
 *.pyc
+scratch_rodar_pipeline.py
+
 
 # Dados sensíveis
 *.csv
